@@ -31,7 +31,7 @@ class MainActivity2 : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-//            _517LabLearnAndroidTheme {
+//            _174LabLearnAndroidTheme {
             Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                 Greeting2(
                     name = "Android2",
