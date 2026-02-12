@@ -8,58 +8,43 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.a174lablearnandroid.ui.theme._174LabLearnAndroidTheme
-import androidx.compose.foundation.lazy.LazyColumn
-import  androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.example.a174lablearnandroid.ui.theme._174LabLearnAndroidTheme
 
 class ListActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            ListScreen()
+            _174LabLearnAndroidTheme {
+                ListScreen()
+            }
         }
     }
 }
 
 @Composable
 fun ListScreen() {
-    Column(modifier = Modifier.background(Color.Red)
-        .padding(40.dp)
+    //ทำง่าย
+    Column (modifier = Modifier.fillMaxSize().background(Color.Red).padding(16.dp)){
+        Column (modifier = Modifier.fillMaxSize().background(Color.Gray).padding(16.dp)){
 
-    ) {
-        Column(modifier = Modifier.fillMaxSize().background(Color.Gray,
-            shape = RoundedCornerShape(16.dp))
-            .padding(16.dp)
-        ) {
-            Column(modifier = Modifier.fillMaxSize().background(Color.White,
-                shape = RoundedCornerShape(16.dp))
-                .padding(16.dp)
-            ) {
-                LazyColumn(
-                    modifier = Modifier.fillMaxSize().background(Color.White)
-                        .padding(16.dp)
-                ) {
-                    items(allKantoPokemon) { item ->
-                        Text(text = item.name ,
-                            fontSize = 36.sp,modifier = Modifier.padding(16.dp))
-                    }
+
+            LazyColumn (modifier =  Modifier.fillMaxSize().background(Color.White).padding(16.dp)){
+                items(allKantoPokemon) { item ->
+                    Text(text = item.name)
                 }
             }
         }
-
     }
-
 }
 data class Pokemon(
     val name: String,
@@ -103,9 +88,10 @@ val allKantoPokemon = listOf(
     Pokemon("Nidoking", 34),
     Pokemon("Clefairy", 35),
 )
-
 @Preview(showBackground = true)
 @Composable
 fun ListPreview() {
-    ListScreen()
+    _174LabLearnAndroidTheme {
+        ListScreen()
+    }
 }
